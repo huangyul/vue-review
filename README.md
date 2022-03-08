@@ -22,3 +22,7 @@ App.mount('#app')
 ###### 原始 html
 
 `v-html="htmltxt"`
+
+### data 和方法
+
+注意点：没有在初始化时放入 data 中的变量不是响应式的
