@@ -1,24 +1,12 @@
 # vue-review
 
-## Project setup
-```
-npm install
-```
+## Vue 基础
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+创建一个 vue
 
-### Compiles and minifies for production
+```javascript
+const App = Vue.createApp({
+  // 选项
+})
+App.mount('#app')
 ```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
