@@ -10,3 +10,15 @@ const App = Vue.createApp({
 })
 App.mount('#app')
 ```
+
+### 模板语法
+
+### 插值
+
+###### 文本
+
+`{{xxx}}`
+
+###### 原始 html
+
+`v-html="htmltxt"`
