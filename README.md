@@ -66,3 +66,60 @@ v-if 也是惰性的：如果在初始渲染时条件为假，则什么也不做
 <!-- 这里v-if的i没有定义 -->
 <li v-for="i in 100" v-if="i > 10"></li>
 ```
+
+### 事件处理
+
+###### 关于传参
+
+```html
+<button @click="onClick('message', $event)"></button>
+```
+
+```javascript
+methods: {
+  onClick(msg, evnet) {
+    console.log(msg) // message
+    console.log(evnet) // 访问原生事件
+  },
+},
+```
+
+### 多事件
+
+```html
+<button @click="onClick('message', $event), two"></button>
+```
+
+```javascript
+methods: {
+  onClick(msg, evnet) {
+    console.log(msg) // message
+    console.log(evnet) // 访问原生事件
+  },
+  two() {}
+},
+```
+
+### 事件修饰符
+
+```html
+<!-- 阻止单击事件继续冒泡 -->
+<a @click.stop="doThis"></a>
+
+<!-- 提交事件不再重载页面 -->
+<form @submit.prevent="onSubmit"></form>
+
+<!-- 修饰符可以串联 -->
+<a @click.stop.prevent="doThat"></a>
+
+<!-- 只有修饰符 -->
+<form @submit.prevent></form>
+
+<!-- 添加事件监听器时使用事件捕获模式 -->
+<!-- 即内部元素触发的事件先在此处理，然后才交由内部元素进行处理 -->
+<div @click.capture="doThis">...</div>
+
+<!-- 只当在 event.target 是当前元素自身时触发处理函数 -->
+<!-- 即事件不是从内部元素触发的 -->
+<div @click.self="doThat">...</div>
+```
