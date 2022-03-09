@@ -170,3 +170,44 @@ app.component('my-component', {
 ###### 禁用 Attribute 继承
 
 `inheritAttrs: false`
+
+#### 自定义事件
+
+```javascript
+this.$emit('xxx')
+```
+
+```html
+<my-component @xxx='xxx'></my-componet>
+```
+
+###### 定义所有发出的事件
+
+```javascript
+app.component('my-component', {
+  emits: ['xxx'],
+})
+```
+
+###### v-model
+
+默认情况下，组件上的 v-model 使用 modelValue 作为 prop 和 update：modelValue 作为事件
+
+```html
+<my-component v-model:title="bookTitle"></my-component>
+```
+
+```javascript
+app.component('my-component', {
+  props: {
+    title: String,
+  },
+  emits: ['update:title'],
+  template: `
+    <input
+      type="text"
+      :value="title"
+      @input="$emit('update:title', $event.target.value)">
+  `,
+})
+```

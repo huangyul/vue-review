@@ -12,6 +12,8 @@
         data-status="actived"
         @change="onChange"
         xxx="123"
+        v-model:title="xxxxx"
+        @on-click="onClick"
       ></my-component>
     </div>
     <script src="https://unpkg.com/vue@next"></script>
@@ -22,6 +24,9 @@
         },
         methods: {
           onChange() {},
+          onClick(txt) {
+            console.log(txt)
+          },
         },
       }
 
@@ -29,11 +34,19 @@
       app.component('my-component', {
         template: `
         <div class="date-picker">
-          <input type="datetime-local" />
+          <input :value="title" type="text" @input="$emit('update:title', $event.target.value)"/>
+          <button @click="onClick">点击</button>
         </div>
         `,
+        props: { title: String },
+        emits: ['on-click'],
         created() {
           console.log(this.$attrs)
+        },
+        methods: {
+          onClick() {
+            this.$emit('on-click', '子组件发出的事件')
+          },
         },
       })
       app.mount('#app')
