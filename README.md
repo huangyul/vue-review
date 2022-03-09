@@ -149,3 +149,24 @@ Vue.component('my-component-name', {
 父级 prop 的更新会向下流动到子组件中，但是反过来则不行。这样会防止从子组件意外变更父级组件的状态，从而导致你的应用的数据流向难以理解。
 
 解决方法：1、使用计算属性；2、子组件在 data 自己维护多一份数据。
+
+#### 非 Prop 的 Attribute
+
+父组件有传东西（包括事件），但是子组件没有放到 props 中，都可以通过 this.$attrs 获取
+
+```javascript
+app.component('my-component', {
+  template: `
+        <div class="date-picker">
+          <input type="datetime-local" />
+        </div>
+        `,
+  created() {
+    console.log(this.$attrs)
+  },
+})
+```
+
+###### 禁用 Attribute 继承
+
+`inheritAttrs: false`

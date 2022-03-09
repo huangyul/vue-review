@@ -7,19 +7,36 @@
     <title>深入组件</title>
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app">
+      <my-component
+        data-status="actived"
+        @change="onChange"
+        xxx="123"
+      ></my-component>
+    </div>
     <script src="https://unpkg.com/vue@next"></script>
     <script>
       const App = {
         data() {
           return {}
         },
-        methods: {},
+        methods: {
+          onChange() {},
+        },
       }
 
-      Vue.component('myE')
-
-      Vue.createApp(App).mount('#app')
+      const app = Vue.createApp(App)
+      app.component('my-component', {
+        template: `
+        <div class="date-picker">
+          <input type="datetime-local" />
+        </div>
+        `,
+        created() {
+          console.log(this.$attrs)
+        },
+      })
+      app.mount('#app')
     </script>
   </body>
 </html>
