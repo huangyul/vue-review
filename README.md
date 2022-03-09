@@ -211,3 +211,121 @@ app.component('my-component', {
   `,
 })
 ```
+
+#### 插槽
+
+也称内容分发，将父组件的分发给子组件
+
+###### 基本使用
+
+子组件
+
+```html
+<div>
+  <slot><slot>
+</div>
+```
+
+父组件
+
+```html
+<my-component>ssss</my-component>
+```
+
+###### 渲染作用域
+
+父级模板里的所有内容都是在父级作用域中编译的；子模板里的所有内容都是在子作用域中编译的。
+
+```html
+<todo-button action="delete">
+  Clicking here will {{ action }} an item
+  <!--
+  `action` 将会是 undefined，因为这个内容是
+  传递到 <todo-button>，
+  而不是在 <todo-button> 中定义的。
+  -->
+</todo-button>
+```
+
+###### 备用内容
+
+当我们没有向插槽提供内容时，可以在<slot>中填入默认的内容
+
+###### 具名插槽
+
+<slot>元素使用 name，父组件在 template 使用 v-slot
+
+```html
+<!-- 子组件 -->
+<header>
+  <slot name="header"></slot>
+</header>
+<!-- 默认name="default"-->
+<main>
+  <slot></slot>
+</main>
+
+<!-- 父组件 -->
+<HelloWorld>
+  <template v-slot:header>
+    <h1>123</h1>
+  </template>
+</HelloWorld>
+```
+
+!> v-slot 只能添加到<template>上，除非是独占默认插槽
+
+###### 作用域插槽
+
+插槽内容可以访问子组件中的数据
+
+```html
+<!-- 子组件 -->
+<div v-for="item in list" :key="item">
+  <slot :item="item"></slot>
+</div>
+
+<!-- 父组件 -->
+<HelloWorld>
+  <template v-slot:default="slotProps">
+    <p>{{ slotProps.item }}</p>
+  </template>
+</HelloWorld>
+
+<!-- 解构 -->
+<HelloWorld>
+  <template v-slot:default="{{item}}">
+    <p>{{ item }}</p>
+  </template>
+</HelloWorld>
+```
+
+###### 独占默认插槽
+
+当只有默认插槽时，可简写为下面的形式
+
+```html
+<HelloWorld v-slot="slotProps">
+  <p>{{slotProps.item}}</p>
+</HelloWorld>
+```
+
+###### 具名插槽缩写
+
+```html
+<!-- 子组件 -->
+<header>
+  <slot name="header"></slot>
+</header>
+<!-- 默认name="default"-->
+<main>
+  <slot></slot>
+</main>
+
+<!-- 父组件 -->
+<HelloWorld>
+  <template #header>
+    <h1>123</h1>
+  </template>
+</HelloWorld>
+```
