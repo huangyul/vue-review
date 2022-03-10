@@ -4,7 +4,7 @@
 
     <div>
       <h4>新增商品</h4>
-      <add-item v-model:item="item"></add-item>
+      <add-item v-model:item="item" @add-item="addItem"></add-item>
     </div>
 
     <item-list :itemList="itemList"></item-list>
@@ -25,8 +25,9 @@
       }
     },
     methods: {
-      addItem(item) {
-        this.itemList.push(item)
+      addItem() {
+        this.itemList.push(this.item)
+        this.item = ''
       },
     },
   }
