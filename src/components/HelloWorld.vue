@@ -3,12 +3,15 @@
     <div v-for="item in list" :key="item">
       <slot :item="item"></slot>
     </div>
+    <child></child>
   </div>
 </template>
 
 <script>
+  import Child from './Child1.vue'
   export default {
     name: 'HelloWorld',
+    components: { Child },
     data() {
       return {
         list: [1, 2, 3],

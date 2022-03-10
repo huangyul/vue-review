@@ -329,3 +329,17 @@ app.component('my-component', {
   </template>
 </HelloWorld>
 ```
+
+#### provide 和 inject
+
+使用一对 provide 和 inject，无论组件层次结构有多深，父组件都可以作为所有子组件的依赖提供者。父组件有一个 provide 选项提供数据，子组件有一个 inject 可以使用这些数据
+
+```javascript
+// 父组件
+provide: { msg: '123123' },
+// 子组件
+inject: ['msg'],
+created() {
+  console.log(this.msg)
+},
+```

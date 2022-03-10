@@ -14,6 +14,12 @@
     components: {
       HelloWorld,
     },
+    provide: { msg: '123123' },
+    data() {
+      return {
+        msg: 'father',
+      }
+    },
   }
 </script>
 
