@@ -4,51 +4,35 @@
 
     <div>
       <h4>新增商品</h4>
-      <input type="text" v-model="item" @keyup.enter="addItem" />
-      <button @click="addItem">添加</button>
+      <add-item v-model:item="item"></add-item>
     </div>
 
-    <div>
-      <h5>商品列表</h5>
-      <p
-        v-for="i in itemList"
-        :key="i"
-        :class="['item', { active: currentItem === i }]"
-        @click="currentItem = i"
-      >
-        {{ i }}
-      </p>
-      <div>总数：{{ total }}</div>
-    </div>
+    <item-list :itemList="itemList"></item-list>
   </div>
 </template>
 
 <script>
+  import ItemList from './components/ItemList.vue'
+  import AddItem from './components/AddItem.vue'
   export default {
     name: 'App',
+    components: { ItemList, AddItem },
     data() {
       return {
         title: '购物车',
         itemList: ['🍎', '🍌', '🧆'],
         item: '',
-        currentItem: '',
       }
     },
-    computed: {
-      total() {
-        return this.itemList.length
-      },
-    },
     methods: {
-      addItem() {
-        this.itemList.push(this.item)
-        this.item = ''
+      addItem(item) {
+        this.itemList.push(item)
       },
     },
   }
 </script>
 
-<style scoped>
+<style>
   .item {
     cursor: pointer;
   }
