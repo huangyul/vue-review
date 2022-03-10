@@ -1,12 +1,13 @@
 <template>
-  <div></div>
+  <div>child2</div>
 </template>
 
 <script>
   export default {
-    inject: ['msg'],
-    created() {
-      console.log(this.msg)
+    name: 'child2',
+    props: {
+      txt: String,
     },
+    emits: ['update:txt'],
   }
 </script>

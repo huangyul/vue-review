@@ -1,21 +1,26 @@
 <template>
   <div>
-    <div v-for="item in list" :key="item">
-      <slot :item="item"></slot>
-    </div>
-    <child></child>
+    <component :is="Child"></component>
+    <button @click="onClick">切换</button>
   </div>
 </template>
 
 <script>
+  /* eslint-disable */
   import Child from './Child1.vue'
+  import Child1 from './Child2.vue'
   export default {
     name: 'HelloWorld',
-    components: { Child },
+    components: { Child, Child1 },
     data() {
       return {
-        list: [1, 2, 3],
+        currentComponent: Child,
       }
+    },
+    methods: {
+      onClick() {
+        this.currentComponent = this.currentComponent === Child ? Child : Child1
+      },
     },
   }
 </script>
