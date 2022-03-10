@@ -8,10 +8,10 @@
 <script>
   export default {
     props: { item: String },
-    emits: ['update:item'],
     data() {
       return {}
     },
+    emits: ['add-item', 'update:item'],
     methods: {
       onInput(e) {
         this.$emit('update:item', e.target.value)
