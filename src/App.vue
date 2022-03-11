@@ -1,6 +1,6 @@
 <template>
   <div>
-    <message v-model:show="show">
+    <message v-model:show="show" class="message-box">
       <template v-slot:title="{ title }">{{ title }}</template>
       新增成功！！
     </message>
@@ -46,5 +46,19 @@
   }
   .active {
     background-color: #838504;
+  }
+  .message-box {
+    padding: 10px 20px;
+    background: #4fc08d;
+    border: 1px solid #42b983;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    opacity: 0.5;
+  }
+  .message-box-close {
+    float: right;
+    cursor: pointer;
   }
 </style>

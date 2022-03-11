@@ -1,9 +1,11 @@
 <template>
-  <div v-if="show" class="message-box">
-    <slot name="title" :title="title"></slot>
-    <slot></slot>
-    <span class="message-box-close" @click="onClose">x</span>
-  </div>
+  <transition name="show">
+    <div v-if="show">
+      <slot name="title" :title="title"></slot>
+      <slot></slot>
+      <span class="message-box-close" @click="onClose">x</span>
+    </div>
+  </transition>
 </template>
 
 <script>
@@ -24,13 +26,25 @@
 </script>
 
 <style scoped>
-  .message-box {
-    padding: 10px 20px;
-    background: #4fc08d;
-    border: 1px solid #42b983;
+
+  /* .show-enter-from {
+    opacity: 0;
   }
-  .message-box-close {
-    float: right;
-    cursor: pointer;
+  .show-leave-to {
+    opacity: 0;
+  }
+  .show-enter-active,
+  .show-leave-active {
+    transition: opacity 1s ease;
+  } */
+
+  .show-leave-active,
+  .show-enter-active {
+    transition: all 1s ease;
+  }
+
+  .show-enter-from,
+  .show-leave-to {
+    opacity: 0;
   }
 </style>
