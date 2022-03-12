@@ -52,10 +52,10 @@
     background: #4fc08d;
     border: 1px solid #42b983;
     position: absolute;
-    left: 0;
+    left: 50%;
     top: 0;
-    right: 0;
-    opacity: 0.5;
+    width: 400px;
+    margin-left: -200px;
   }
   .message-box-close {
     float: right;

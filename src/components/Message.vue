@@ -26,7 +26,6 @@
 </script>
 
 <style scoped>
-
   /* .show-enter-from {
     opacity: 0;
   }
@@ -43,8 +42,12 @@
     transition: all 1s ease;
   }
 
-  .show-enter-from,
+  .show-enter-from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
   .show-leave-to {
     opacity: 0;
+    transform: translateY(-20px);
   }
 </style>

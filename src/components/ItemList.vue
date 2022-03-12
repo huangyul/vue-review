@@ -2,10 +2,10 @@
   <div>
     <h5>商品列表</h5>
     <p
-      v-for="i in itemList"
-      :key="i"
-      :class="['item', { active: currentItem === i }]"
-      @click="currentItem = i"
+      v-for="(i, index) in itemList"
+      :key="index"
+      :class="['item', { active: currentItem === index }]"
+      @click="currentItem = index"
     >
       {{ i }}
     </p>
