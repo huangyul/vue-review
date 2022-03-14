@@ -410,3 +410,38 @@ app.directive('permission', {
   },
 })
 ```
+
+### 渲染函数
+
+基本用法
+
+```javascript
+render: function(createElement) {
+  // 返回的是Vnode
+  return createElement(
+    tag, // 标签名
+    data, // 传递参数
+    children, // 子节点数组
+  )
+}
+```
+
+实例
+
+```javascript
+app.component('anchored-heading', {
+  render() {
+    return h(
+      'h' + this.level, // 标签名
+      {}, // prop 或 attribute
+      this.$slots.default() // 包含其子节点的数组
+    )
+  },
+  props: {
+    level: {
+      type: Number,
+      required: true,
+    },
+  },
+})
+```

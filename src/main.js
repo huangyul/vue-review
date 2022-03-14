@@ -1,4 +1,5 @@
-import { createApp } from 'vue'
+/* eslint-disable */
+import { createApp, h } from 'vue'
 import App from './App.vue'
 
 const app = createApp(App)
@@ -29,6 +30,20 @@ app.directive('permission', {
     if (building.value != 'admin') {
       el.parentNode.removeChild(el)
     }
+  },
+})
+
+// 渲染组件
+// <heading :level='n' :title="title">{{title}}</heading>
+app.component('heading', {
+  props: {
+    level: {
+      type: String,
+      required: true,
+    },
+  },
+  render() {
+    return h('h' + this.level, {}, this.$slots.default())
   },
 })
 
