@@ -379,3 +379,34 @@ app.mixin(myMixin)
 
 mixins: [myMixin]
 ```
+
+#### 自定义指令
+
+```javascript
+// 自定义指令
+app.directive('focus', {
+  // 当被绑定的元素挂载
+  mounted(el) {
+    el.focus()
+  },
+})
+
+// 局部指令
+directives: {
+  focus: {
+    // 指令的定义
+    mounted(el) {
+      el.focus()
+    }
+  }
+}
+
+// 动态参数指令
+app.directive('permission', {
+  mounted(el, building) {
+    if (building.value != 'admin') {
+      el.parentNode.removeChild(el)
+    }
+  },
+})
+```

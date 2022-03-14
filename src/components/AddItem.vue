@@ -1,7 +1,7 @@
 <template>
   <div>
-    <input type="text" :value="item" @input="onInput" />
-    <button @click="addItem">添加</button>
+    <input v-focus type="text" :value="item" @input="onInput" />
+    <button v-permission="'123'" @click="addItem">添加</button>
   </div>
 </template>
 
