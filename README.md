@@ -351,3 +351,31 @@ created() {
 ###### 在动态组件上使用 keep-alive
 
 <keep-alive>包裹动态组件时，会缓存不活动的组件实例，它是一个抽象组件，本身不会渲染一个 DOM 元素
+
+### 可复用性&组合
+
+#### Mixin
+
+用来分发 Vue 组件中的可复用功能
+
+```javascript
+// 全局混入
+// 定义全局混入
+const myMixin = {
+  created() {
+    this.hello()
+  },
+
+  methods: {
+    hello() {
+      console.log('hello from mixin')
+    },
+  },
+}
+
+app.mixin(myMixin)
+
+// 组件混入
+
+mixins: [myMixin]
+```
