@@ -459,3 +459,21 @@ Vue.component('heading', {
   functional: true, // 标记为函数式组件
 })
 ```
+
+### mock 数据
+
+在 vue.config.js 中的 devServer 可以配置 mock 数据
+
+```javascript
+// vue.config.js
+module.exports = {
+  devServer: {
+    before(app) {
+      // 写express语法
+      app.get('/api/getItems', (req, res) => {
+        res.json('hello')
+      })
+    },
+  },
+}
+```

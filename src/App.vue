@@ -20,16 +20,22 @@
   import ItemList from './components/ItemList.vue'
   import AddItem from './components/AddItem.vue'
   import Message from './components/Message.vue'
+  import axios from 'axios'
   export default {
     name: 'App',
     components: { ItemList, AddItem, Message },
     data() {
       return {
         title: '购物车',
-        itemList: ['🍎', '🍌', '🧆'],
+        itemList: [],
         item: '',
         show: false, // 提示框状态
       }
+    },
+    created() {
+      axios.get('/api/getItems').then((res) => {
+        this.itemList = res.data
+      })
     },
     methods: {
       addItem() {
