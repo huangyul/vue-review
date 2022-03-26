@@ -4,7 +4,7 @@
       <template v-slot:title="{ title }">{{ title }}</template>
       新增成功！！
     </message>
-    <heading :level="2">{{ title }}</heading>
+    <heading :level="1" :title="title">{{ title }}</heading>
     <h1>{{ title }}</h1>
 
     <div>

@@ -430,10 +430,10 @@ render: function(createElement) {
 
 ```javascript
 app.component('anchored-heading', {
-  render() {
+  render(h) {
     return h(
       'h' + this.level, // 标签名
-      {}, // prop 或 attribute
+      { attrs: { title: this.title } }, // prop 或 attribute
       this.$slots.default() // 包含其子节点的数组
     )
   },
@@ -442,6 +442,20 @@ app.component('anchored-heading', {
       type: Number,
       required: true,
     },
+    title: {
+      type: String,
+      default: 'title',
+    },
   },
+})
+```
+
+### 函数式组件
+
+组件没有管理任何状态，也没有监听任何传递给它的状态，也没有生命周期方法，可以将组件标记为`functional`
+
+```javascript
+Vue.component('heading', {
+  functional: true, // 标记为函数式组件
 })
 ```
