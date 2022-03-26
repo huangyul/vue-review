@@ -8,7 +8,9 @@
         :class="['item', { active: currentItem === index }]"
         @click="currentItem = index"
       >
-        {{ i }}
+        <router-link :to="`/detail/${i}`">
+          {{ i }}
+        </router-link>
       </p>
     </transition-group>
 

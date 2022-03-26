@@ -2,6 +2,8 @@
 import { createApp, h } from 'vue'
 import App from './App.vue'
 
+import router from './router/index'
+
 const app = createApp(App)
 
 // 定义全局混入
@@ -48,5 +50,7 @@ app.component('heading', {
 })
 
 app.mixin(myMixin)
+
+app.use(router)
 
 app.mount('#app')
